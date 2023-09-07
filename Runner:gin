@@ -1,0 +1,22 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+  echo "Usage: gin <source_file.cpp>"
+  exit 1
+fi
+
+source_file="$1"
+executable="${source_file%.cpp}"
+
+if [ ! -f "$source_file" ]; then
+  echo "Error: File '$source_file' not found."
+  exit 1
+fi
+
+# Compile the C++ source file with the specified flags
+if g++ -std=c++17 -Wshadow -Wall -o "$executable" "$source_file"; then
+  echo "Compilation successful. Wishing Accepted. Running '$executable':"
+  "./$executable"
+else
+  echo "Compilation failed."
+fi

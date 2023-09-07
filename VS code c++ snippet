@@ -1,0 +1,102 @@
+{
+	"Competitive programming boilder plate": {
+		"prefix": "cpbp",
+		"body": [
+			"//@author: case3",
+			"",
+			"#define __STDC_LIMIT_MACROS",
+			"#include<iostream>",
+			"#include<vector>",
+			"#include<set>",
+			"#include<map>",
+			"#include<unordered_map>",
+			"#include<queue>",
+			"#include<stack>",
+			"#include<cstring>",
+			"#include<chrono>",
+			"#include<algorithm>",
+			"#include<cmath>",
+			"using namespace std;",
+			"",
+			"#define int long long",
+			"#define null 0",
+			"",
+			"#define ceil(a, b) ((a + b - 1) / b)",
+			"",
+			"template<class T> using PQ = priority_queue<T>;",
+			"template<class T> using RPQ = priority_queue<T, vector<T>, greater<T>>;",
+			"",
+			"void solve(){",
+			"\t$0",
+			"}",
+			"",
+			"signed main(){",
+			"    ios_base::sync_with_stdio(false);",
+			"    cin.tie(null);",
+			"    int t=1;",
+			"    cin >> t;",
+			"    while(t--){",
+			"        solve();",
+			"    }",
+			"    return 0;",
+			"}"
+		],
+		"description": "C++ Author Template"
+	},	
+	"Unordered Hash Map": {
+		"prefix": "umap_snippet",
+		"body": [
+			"struct custom_hash {",
+			"    static uint64_t splitmix64(uint64_t x) {",
+			"        x += 0x9e3779b97f4a7c15;",
+			"        x = (x ^ (x >> 30)) * 0xbf58476d1ce4e5b9;",
+			"        x = (x ^ (x >> 27)) * 0x94d049bb133111eb;",
+			"        return x ^ (x >> 31);",
+			"    }",
+			"    size_t operator()(uint64_t x) const {",
+			"        static const uint64_t FIXED_RANDOM = chrono::steady_clock::now().time_since_epoch().count();",
+			"        return splitmix64(x + FIXED_RANDOM);",
+			"    }",
+			"};",
+			"",
+			"template<class A, class B> using umap = unordered_map<A, B, custom_hash>;"
+		],
+		"description": "Unordered Hash Map with custom function"
+	},
+	"GCD Function": {
+		"prefix": "gcd_snippet",
+		"body": [
+			"int gcd(int a, int b) {",
+			"    while (a > 0 && b > 0) {",
+			"        if (a > b) {",
+			"            a = a % b;",
+			"        }",
+			"        else {",
+			"            b = b % a;",
+			"        }",
+			"    }",
+			"    if (a == 0) {",
+			"        return b;",
+			"    }",
+			"    return a;",
+			"}"
+		],
+		"description": "Calculate the greatest common divisor (GCD)"
+	},
+	"Square Root Function": {
+		"prefix": "sqrt_snippet",
+		"body": [
+			"int sqrt(int n) {",
+			"    int ans = 0;",
+			"    for (int k = 1LL << 30; k != 0; k /= 2) {",
+			"        if ((ans + k) * (ans + k) <= n) {",
+			"            ans += k;",
+			"        }",
+			"    }",
+			"    return ans;",
+			"}"
+		],
+		"description": "Calculate the square root of an integer"
+	}
+
+}
